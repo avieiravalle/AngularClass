@@ -16,8 +16,8 @@ var Carro = /** @class */ (function () {
     };
     return Carro;
 }());
-var carro = new Carro('ecosport', 4);
-console.log(carro);
+// let carro = new Carro('ecosport', 4);
+// console.log(carro)
 var Concessionaria = /** @class */ (function () {
     function Concessionaria(endereco, listadeCarros) {
         this.endereco = endereco;
@@ -31,8 +31,8 @@ var Concessionaria = /** @class */ (function () {
     };
     return Concessionaria;
 }());
-var concessionaria = new Concessionaria('Av paulista', 5);
-console.log(concessionaria);
+// let concessionaria = new Concessionaria('Av paulista', 5);
+// console.log(concessionaria);
 var Pessoa = /** @class */ (function () {
     function Pessoa(nome, carroPreferido) {
         this.nome = nome;
@@ -44,7 +44,7 @@ var Pessoa = /** @class */ (function () {
     Pessoa.prototype.dizerCarroPreferido = function () {
         return this.carroPreferido;
     };
-    Pessoa.prototype.comprarCarro = function () {
+    Pessoa.prototype.comprarCarro = function (carro) {
         this.carro = carro;
     };
     Pessoa.prototype.dizerCarroTem = function () {
@@ -52,5 +52,21 @@ var Pessoa = /** @class */ (function () {
     };
     return Pessoa;
 }());
-var pessoa = new Pessoa('Anderson', 'EcoSport');
-console.log(pessoa.dizerCarroPreferido());
+//  let pessoa = new Pessoa('Anderson', 'EcoSport');
+// console.log(pessoa.dizerCarroPreferido())
+/*====== Criando Carros ======*/
+var carroA = new Carro('EcoSport', 4);
+var carroB = new Carro('Tucson', 4);
+var carroC = new Carro('Ranger', 4);
+/* ====== lista da conseionaria ====*/
+var listaDeCarros = [carroA, carroB, carroC];
+var concessionaria = new Concessionaria('Av Paulista', listaDeCarros);
+console.log(concessionaria.mostrarListadeCarros());
+/* compra carro */
+var cliente = new Pessoa('Jose', 'Tucson');
+concessionaria.mostrarListadeCarros().map(function (carro) {
+    if (carro['modelo'] == cliente.dizerCarroPreferido()) {
+        cliente.comprarCarro(carro);
+    }
+});
+console.log(cliente.dizerCarroPreferido());

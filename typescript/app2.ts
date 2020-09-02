@@ -21,15 +21,15 @@ class Carro {
         return this.velocidade
     }
 }
-let carro = new Carro('ecosport', 4);
-console.log(carro)
+// let carro = new Carro('ecosport', 4);
+// console.log(carro)
 
 
 class Concessionaria {
     private endereco: string
-    private listadeCarros: any
+    private listadeCarros: Array<Carro>
 
-    constructor(endereco: string, listadeCarros: any) {
+    constructor(endereco: string, listadeCarros: Carro[]) {
         this.endereco = endereco
         this.listadeCarros = listadeCarros
     }
@@ -38,13 +38,13 @@ class Concessionaria {
         return this.endereco
     }
 
-    public mostrarListadeCarros(): any {
+    public mostrarListadeCarros(): Array<Carro> {
         return this.listadeCarros
     }
 }
 
-let concessionaria = new Concessionaria('Av paulista', 5);
-console.log(concessionaria);
+// let concessionaria = new Concessionaria('Av paulista', 5);
+// console.log(concessionaria);
 
 
 class Pessoa {
@@ -55,7 +55,7 @@ class Pessoa {
     constructor(nome: string, carroPreferido: string) {
         this.nome = nome
         this.carroPreferido = carroPreferido
-       
+
     }
 
     public dizerNome(): string {
@@ -66,14 +66,41 @@ class Pessoa {
         return this.carroPreferido
     }
 
-    public comprarCarro(): void {
+    public comprarCarro(carro: Carro): void {
         this.carro = carro
     }
 
-    public dizerCarroTem(): any {
-       return this.carro
+    public dizerCarroTem(): Carro {
+        return this.carro
     }
 
 }
-let pessoa = new Pessoa('Anderson', 'EcoSport');
-console.log(pessoa.dizerCarroPreferido())
+//  let pessoa = new Pessoa('Anderson', 'EcoSport');
+// console.log(pessoa.dizerCarroPreferido())
+
+/*====== Criando Carros ======*/
+
+let carroA = new Carro('EcoSport', 4)
+let carroB = new Carro('Tucson', 4)
+let carroC = new Carro('Ranger', 4)
+
+/* ====== lista da conseionaria ====*/
+
+let listaDeCarros: Carro[] = [carroA, carroB, carroC]
+let concessionaria = new Concessionaria('Av Paulista', listaDeCarros);
+
+console.log(concessionaria.mostrarListadeCarros())
+
+
+/* compra carro */
+
+let cliente = new Pessoa('Jose', 'Tucson')
+concessionaria.mostrarListadeCarros().map((carro: Carro) => {
+
+    if (carro['modelo'] == cliente.dizerCarroPreferido()) {
+        cliente.comprarCarro(carro)
+    }
+
+})
+
+console.log(cliente.dizerCarroPreferido())
