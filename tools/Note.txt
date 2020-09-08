@@ -1,0 +1,3 @@
+tsc -w
+
+init tsconfig
