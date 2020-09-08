@@ -1,69 +1,20 @@
 "use strict";
-var Carro = /** @class */ (function () {
-    function Carro(modelo, numerodePortas) {
-        this.velocidade = 0;
-        this.modelo = modelo;
-        this.numerodePortas = numerodePortas;
-    }
-    Carro.prototype.acelerar = function () {
-        this.velocidade = this.velocidade + 10;
-    };
-    Carro.prototype.parar = function () {
-        this.velocidade = 0;
-    };
-    Carro.prototype.velocidadeAtual = function () {
-        return this.velocidade;
-    };
-    return Carro;
-}());
-// let carro = new Carro('ecosport', 4);
-// console.log(carro)
-var Concessionaria = /** @class */ (function () {
-    function Concessionaria(endereco, listadeCarros) {
-        this.endereco = endereco;
-        this.listadeCarros = listadeCarros;
-    }
-    Concessionaria.prototype.fornecerEndereco = function () {
-        return this.endereco;
-    };
-    Concessionaria.prototype.mostrarListadeCarros = function () {
-        return this.listadeCarros;
-    };
-    return Concessionaria;
-}());
-// let concessionaria = new Concessionaria('Av paulista', 5);
-// console.log(concessionaria);
-var Pessoa = /** @class */ (function () {
-    function Pessoa(nome, carroPreferido) {
-        this.nome = nome;
-        this.carroPreferido = carroPreferido;
-    }
-    Pessoa.prototype.dizerNome = function () {
-        return this.nome;
-    };
-    Pessoa.prototype.dizerCarroPreferido = function () {
-        return this.carroPreferido;
-    };
-    Pessoa.prototype.comprarCarro = function (carro) {
-        this.carro = carro;
-    };
-    Pessoa.prototype.dizerCarroTem = function () {
-        return this.carro;
-    };
-    return Pessoa;
-}());
-//  let pessoa = new Pessoa('Anderson', 'EcoSport');
-// console.log(pessoa.dizerCarroPreferido())
-/*====== Criando Carros ======*/
-var carroA = new Carro('EcoSport', 4);
-var carroB = new Carro('Tucson', 4);
-var carroC = new Carro('Ranger', 4);
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var carro_1 = __importDefault(require("./carro"));
+var concessionaria_1 = require("./concessionaria");
+var pessoa_1 = require("./pessoa");
+var carroA = new carro_1.default('EcoSport', 4);
+var carroB = new carro_1.default('Tucson', 4);
+var carroC = new carro_1.default('Ranger', 4);
 /* ====== lista da conseionaria ====*/
 var listaDeCarros = [carroA, carroB, carroC];
-var concessionaria = new Concessionaria('Av Paulista', listaDeCarros);
+var concessionaria = new concessionaria_1.Concessionaria('Av Paulista', listaDeCarros);
 console.log(concessionaria.mostrarListadeCarros());
 /* compra carro */
-var cliente = new Pessoa('Jose', 'Tucson');
+var cliente = new pessoa_1.Pessoa('Jose', 'Tucson');
 concessionaria.mostrarListadeCarros().map(function (carro) {
     if (carro['modelo'] == cliente.dizerCarroPreferido()) {
         cliente.comprarCarro(carro);
