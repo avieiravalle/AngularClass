@@ -1,7 +1,7 @@
-import {Carro} from './carro'
+import Carro from './carro'
 
 
-export class Pessoa {
+export default class Pessoa {
     private nome: string
     private carroPreferido: string
     private carro: any

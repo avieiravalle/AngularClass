@@ -1,14 +1,17 @@
 import Carro from './carro'
+import ConcecessionariaInterface from './Concessionariainterface'
 
 
-
-export class Concessionaria {
+export default class Concessionaria implements ConcecessionariaInterface {
     private endereco: string
     private listadeCarros: Array<Carro>
 
     constructor(endereco: string, listadeCarros: Carro[]) {
         this.endereco = endereco
         this.listadeCarros = listadeCarros
+    }
+    fornecerHorariodeFuncionamento(): string {
+       return 'De segunda a Sexta das 9 as 18 Hrs'
     }
 
     public fornecerEndereco(): string {

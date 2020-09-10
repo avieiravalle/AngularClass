@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var veiculo_1 = __importDefault(require("./veiculo"));
+var Veiculo_1 = __importDefault(require("./Veiculo"));
 var Carro = /** @class */ (function (_super) {
     __extends(Carro, _super);
     function Carro(modelo, numeroDePortas) {
@@ -26,5 +26,5 @@ var Carro = /** @class */ (function (_super) {
         return _this;
     }
     return Carro;
-}(veiculo_1.default));
+}(Veiculo_1.default));
 exports.default = Carro;
